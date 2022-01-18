@@ -13,7 +13,12 @@
         </button>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Home</a>
+        <router-link
+          :to="{ name: adminHome }"
+          class="nav-link"
+          :class="$route.name === 'adminHome' ? 'active' : ''"
+          >Home</router-link
+        >
       </li>
     </ul>
     <ul class="navbar-nav">

@@ -27683,48 +27683,62 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "nav",
+    {
+      staticClass:
+        "\n    main-header\n    navbar navbar-expand navbar-white navbar-light\n    justify-content-between\n  ",
+    },
+    [
+      _c("ul", { staticClass: "navbar-nav" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "nav-item" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "nav-link",
+                class: _vm.$route.name === "adminHome" ? "active" : "",
+                attrs: { to: { name: _vm.adminHome } },
+              },
+              [_vm._v("Home")]
+            ),
+          ],
+          1
+        ),
+      ]),
+      _vm._v(" "),
+      _vm._m(1),
+    ]
+  )
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      {
-        staticClass:
-          "\n    main-header\n    navbar navbar-expand navbar-white navbar-light\n    justify-content-between\n  ",
-      },
-      [
-        _c("ul", { staticClass: "navbar-nav" }, [
-          _c("li", { staticClass: "nav-item" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn nav-link",
-                attrs: { "data-widget": "pushmenu" },
-              },
-              [_c("i", { staticClass: "fas fa-bars" })]
-            ),
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "nav-item" }, [
-            _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-              _vm._v("Home"),
-            ]),
-          ]),
+    return _c("li", { staticClass: "nav-item" }, [
+      _c(
+        "button",
+        { staticClass: "btn nav-link", attrs: { "data-widget": "pushmenu" } },
+        [_c("i", { staticClass: "fas fa-bars" })]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "navbar-nav" }, [
+      _c("li", { staticClass: "nav-item" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+          _vm._v(" Logout "),
         ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "navbar-nav" }, [
-          _c("li", { staticClass: "nav-item" }, [
-            _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-              _vm._v(" Logout "),
-            ]),
-          ]),
-        ]),
-      ]
-    )
+      ]),
+    ])
   },
 ]
 render._withStripped = true
