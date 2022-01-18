@@ -8,9 +8,9 @@
   >
     <ul class="navbar-nav">
       <li class="nav-item">
-        <button class="btn nav-link" data-widget="pushmenu"
-          ><i class="fas fa-bars"></i
-        ></button>
+        <button class="btn nav-link" data-widget="pushmenu">
+          <i class="fas fa-bars"></i>
+        </button>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Home</a>
