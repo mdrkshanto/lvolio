@@ -1,11 +1,5 @@
 <template>
-  <div class="card">
-    <div class="card-header">
-      <div class="row">
-        <h3 class="card-title col">{{ $route.meta.card }}</h3>
-        <a href="#" class="col-1 btn btn-primary btn-sm shadow-none">Button</a>
-      </div>
-    </div>
+  <div class="card-wrap">
     <div class="card-body">
       <table
         class="

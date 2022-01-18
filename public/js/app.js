@@ -2139,7 +2139,20 @@ var routes = [{
   meta: {
     title: "Home Page",
     page: "Home Page",
-    card: "Home Contents"
+    cardTitle: "Home Contents",
+    button: {
+      link: "adminHome",
+      title: '<i class="fas fa-plus"></i>'
+    }
+  },
+  component: _components_backEnd_home_index__WEBPACK_IMPORTED_MODULE_0__["default"]
+}, {
+  path: "/add-home",
+  name: "addHome",
+  meta: {
+    title: "Home Page",
+    page: "Home Page",
+    cardTitle: "Home Contents"
   },
   component: _components_backEnd_home_index__WEBPACK_IMPORTED_MODULE_0__["default"]
 }];
@@ -2167,7 +2180,7 @@ router.beforeEach(function (to, from, next) {
   document.title = 'Shanto' + ' | ' + to.meta.title;
   next();
 });
-var app = new Vue({
+new Vue({
   router: router
 }).$mount("#app");
 
@@ -27343,59 +27356,42 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("h3", { staticClass: "card-title col" }, [
-          _vm._v(_vm._s(_vm.$route.meta.card)),
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "col-1 btn btn-primary btn-sm shadow-none",
-            attrs: { href: "#" },
-          },
-          [_vm._v("Button")]
-        ),
-      ]),
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-footer" }, [_vm._v("Footer")]),
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c(
-        "table",
-        {
-          staticClass:
-            "\n        table table-dark\n        bg-black\n        table-sm table-striped table-borderless\n        rounded\n      ",
-        },
-        [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v("#")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Name")]),
+    return _c("div", { staticClass: "card-wrap" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "table",
+          {
+            staticClass:
+              "\n        table table-dark\n        bg-black\n        table-sm table-striped table-borderless\n        rounded\n      ",
+          },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("#")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Name")]),
+              ]),
             ]),
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [_vm._v("1")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Jamal")]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c("td", [_vm._v("1")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Jamal")]),
+              ]),
             ]),
-          ]),
-        ]
-      ),
+          ]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-footer" }, [_vm._v("Footer")]),
     ])
   },
 ]
@@ -27421,7 +27417,35 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "content" }, [_c("router-view")], 1)
+  return _c("section", { staticClass: "content" }, [
+    _c(
+      "div",
+      { staticClass: "card" },
+      [
+        _c("div", { staticClass: "card-header" }, [
+          _c(
+            "div",
+            { staticClass: "row" },
+            [
+              _c("h3", { staticClass: "card-title col" }, [
+                _vm._v(_vm._s(_vm.$route.meta.cardTitle)),
+              ]),
+              _vm._v(" "),
+              _c("router-link", {
+                staticClass: "col-1 btn btn-primary btn-sm shadow-none",
+                attrs: { to: { name: "" + _vm.$route.meta.button.link } },
+                domProps: { innerHTML: _vm._s(_vm.$route.meta.button.title) },
+              }),
+            ],
+            1
+          ),
+        ]),
+        _vm._v(" "),
+        _c("router-view"),
+      ],
+      1
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

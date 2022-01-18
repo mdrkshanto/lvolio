@@ -6,7 +6,21 @@ export const routes = [
         meta: {
             title: "Home Page",
             page: "Home Page",
-            card: "Home Contents"
+            cardTitle: "Home Contents",
+            button: {
+                link: "adminHome",
+                title: '<i class="fas fa-plus"></i>'
+            }
+        },
+        component: adminHome
+    },
+    {
+        path: "/add-home",
+        name: "addHome",
+        meta: {
+            title: "Home Page",
+            page: "Home Page",
+            cardTitle: "Home Contents"
         },
         component: adminHome
     },

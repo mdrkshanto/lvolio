@@ -20,4 +20,4 @@ router.beforeEach((to, from, next) => {
     next()
 })
 
-const app = new Vue({ router }).$mount("#app")
+new Vue({ router }).$mount("#app")
