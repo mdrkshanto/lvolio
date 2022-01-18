@@ -1,9 +1,10 @@
 window._ = require('lodash');
 
 try {
-    window.$ = window.jquery = window.jQuery = require("jquery")
+    window.$ = window.jquery = window.jQuery = require("jquery/dist/jquery.slim.min")
     require("bootstrap/dist/js/bootstrap.bundle")
     window.Vue = require('vue/dist/vue')
+    window.VueRouter = require('vue-router/dist/vue-router')
 } catch (error) {}
 
 window.axios = require('axios');
