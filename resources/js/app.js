@@ -4,7 +4,9 @@ require('./bootstrap');
 
 
 
+import VueFormulate from '@braid/vue-formulate'
 
+Vue.use(VueFormulate)
 
 
 Vue.component("Admin", require("../components/backEnd/master/index").default)

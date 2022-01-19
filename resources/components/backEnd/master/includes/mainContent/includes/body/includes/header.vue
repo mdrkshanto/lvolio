@@ -1,7 +1,7 @@
 <template>
   <div class="card-header">
     <div class="row">
-      <h3 class="card-title col">{{ $route.meta.cardTitle }}</h3>
+      <span class="card-title col fw-bolder">{{ $route.meta.cardTitle }}</span>
       <router-link
         :to="{ name: `${$route.meta.button.link}` }"
         class="col-1 btn btn-primary btn-sm shadow-none"

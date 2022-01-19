@@ -1,4 +1,5 @@
 import adminHome from '../components/backEnd/home/index'
+import addHome from '../components/backEnd/home/includes/add'
 export const routes = [
     {
         path: "/home",
@@ -8,8 +9,8 @@ export const routes = [
             page: "Home Page",
             cardTitle: "Home Contents",
             button: {
-                link: "adminHome",
-                title: '<i class="fas fa-plus"></i>'
+                link: "addHome",
+                title: `<i class="fas fa-plus"></i>`
             }
         },
         component: adminHome
@@ -18,10 +19,14 @@ export const routes = [
         path: "/add-home",
         name: "addHome",
         meta: {
-            title: "Home Page",
-            page: "Home Page",
-            cardTitle: "Home Contents"
+            title: "Add Home",
+            page: "Add Home",
+            cardTitle: "Add New",
+            button: {
+                link: "adminHome",
+                title: `<i class="fas fa-arrow-left"></i>`
+            }
         },
-        component: adminHome
+        component: addHome
     },
 ]
