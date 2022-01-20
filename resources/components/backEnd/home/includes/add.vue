@@ -5,13 +5,28 @@
         <div class="my-4">
           <label class="form-label">Background Image</label>
           <div class="input-group input-group-sm">
-            <input
-              class="form-control shadow-none"
-              :value="bgImg"
-              type="file"
-              @input="bgImg = $event.target.value"
-              ref="bgImg"
-            />
+            <div class="position-relative">
+              <input
+                class="form-control shadow-none"
+                :value="form.bgImg"
+                type="file"
+                accept="image/webp"
+                @input="form.bgImg = $event.target.value"
+                ref="bgImg"
+              />
+              <button
+                class="
+                  btn btn-sm btn-close
+                  shadow-none
+                  position-absolute
+                  translate-middle
+                  top-50
+                  bg-transparent
+                "
+                v-if="form.bgImg != null"
+                @click.prevent="form.bgImg = null"
+              ></button>
+            </div>
             <select class="form-select text-center shadow-none">
               <option value="1">Welcome</option>
             </select>
@@ -22,15 +37,30 @@
         </div>
       </div>
     </div>
+    <div class="card-footer">
+      <div class="row align-items-center justify-content-between">
+        <button class="btn btn-sm shadow-none btn-primary col-2">Create</button>
+        <button class="btn btn-sm shadow-none btn-secondary col-2">
+          Reset
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      bgImg: null,
+      form: new Form({
+        bgImg: null,
+      }),
     };
   },
 };
 </script>
+<style scoped>
+.btn-close {
+  right: -1.4rem;
+}
+</style>
 

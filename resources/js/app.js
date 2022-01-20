@@ -3,10 +3,8 @@ require('./bootstrap');
 
 
 
-
-import VueFormulate from '@braid/vue-formulate'
-
-Vue.use(VueFormulate)
+import Form from "vform";
+window.Form = Form;
 
 
 Vue.component("Admin", require("../components/backEnd/master/index").default)

@@ -1,6 +1,6 @@
 <template>
   <div class="card-header">
-    <div class="row">
+    <div class="row align-items-center">
       <span class="card-title col fw-bolder">{{ $route.meta.cardTitle }}</span>
       <router-link
         :to="{ name: `${$route.meta.button.link}` }"
