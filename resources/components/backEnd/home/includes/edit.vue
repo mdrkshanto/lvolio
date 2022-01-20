@@ -70,15 +70,19 @@ export default {
   },
   methods: {
     submit() {
-      this.form.post("api/addHome").then(() => {
-        this.form.bgImg = null;
-        this.$refs.bgImg.value = null;
+      axios.post("api/updateHome" + this.$route.params.id, this.form).then((r) => {
+        console.log(r);
       });
     },
     reset() {
       this.form.bgImg = null;
       this.$refs.bgImg.value = null;
     },
+  },
+  mounted() {
+    axios.get("api/editHomeData" + this.$route.params.id).then((res) => {
+      this.$set(this, "form", res.data.editData);
+    });
   },
 };
 </script>

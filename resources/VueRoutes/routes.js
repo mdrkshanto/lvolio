@@ -1,5 +1,6 @@
 import adminHome from '../components/backEnd/home/index'
 import addHome from '../components/backEnd/home/includes/add'
+import editHome from '../components/backEnd/home/includes/edit'
 export const routes = [
     {
         path: "/home",
@@ -28,5 +29,19 @@ export const routes = [
             }
         },
         component: addHome
+    },
+    {
+        path: "/edit-home:id",
+        name: "editHome",
+        meta: {
+            title: "Edit Home",
+            page: "Edit Home",
+            cardTitle: "Edit",
+            button: {
+                link: "adminHome",
+                title: `<i class="fas fa-arrow-left"></i>`
+            }
+        },
+        component: editHome
     },
 ]

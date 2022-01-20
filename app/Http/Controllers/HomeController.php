@@ -62,9 +62,15 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function editHome()
     {
-        //
+        return view('backEnd');
+    }
+    public function edit($id)
+    {
+        $home = Home::find($id);
+        return response()->json(["editData" => $home], 200);
+        return view('backEnd');
     }
 
     /**
@@ -74,9 +80,18 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Home $home)
+    public function update(Request $request, $id)
     {
-        //
+        $home = Home::find($id);
+        if ($request->file('bgImg')) {
+            unlink($home->bgImg);
+            $img = $request->file('bgImg');
+            $imgName = time() . rand() . '.' . $img->extension();
+            $img->move(public_path('frontEnd/assets/img/home/bg'), $imgName);
+            $bgImg = 'frontEnd/assets/img/home/bg/' . $imgName;
+            $home->bgImg = $bgImg;
+            $home->save();
+        }
     }
 
     /**

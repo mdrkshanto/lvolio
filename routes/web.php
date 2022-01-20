@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 Route::get('/home', [HomeController::class, 'show']);
 Route::get('/add-home', [HomeController::class, 'create']);
+Route::get('/edit-home{id}', [HomeController::class, 'editHome']);
 
 
 Route::get('/dashboard', function () {
