@@ -35,7 +35,14 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $home = new Home();
+
+        $img = $request->file('bgImg');
+        $imgName = time() . rand() . '.' . $img->extension();
+        $img->move(public_path('frontEnd/assets/img/home/bg'), $imgName);
+        $bgImg = 'frontEnd/assets/img/home/bg/' . $imgName;
+        $home->bgImg = $bgImg;
+        $home->save();
     }
 
     /**

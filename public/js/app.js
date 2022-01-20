@@ -2114,6 +2114,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2121,6 +2133,20 @@ __webpack_require__.r(__webpack_exports__);
         bgImg: null
       })
     };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      this.form.post("api/addHome").then(function () {
+        _this.form.bgImg = null;
+        _this.$refs.bgImg.value = null;
+      });
+    },
+    reset: function reset() {
+      this.form.bgImg = null;
+      this.$refs.bgImg.value = null;
+    }
   }
 });
 
@@ -27713,15 +27739,17 @@ var render = function () {
                 ref: "bgImg",
                 staticClass: "form-control shadow-none",
                 attrs: { type: "file", accept: "image/webp" },
-                domProps: { value: _vm.form.bgImg },
                 on: {
-                  input: function ($event) {
-                    _vm.form.bgImg = $event.target.value
+                  change: function ($event) {
+                    _vm.form.bgImg = $event.target.files[0]
                   },
                 },
               }),
               _vm._v(" "),
-              _vm.form.bgImg != null
+              _vm.form.bgImg != null &&
+              _vm.form.bgImg != "" &&
+              _vm.form.bgImg != 0 &&
+              _vm.form.bgImg != "0"
                 ? _c("button", {
                     staticClass:
                       "\n                btn btn-sm btn-close\n                shadow-none\n                position-absolute\n                translate-middle\n                top-50\n                bg-transparent\n              ",
@@ -27743,7 +27771,41 @@ var render = function () {
       ]),
     ]),
     _vm._v(" "),
-    _vm._m(2),
+    _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "div",
+        { staticClass: "row align-items-center justify-content-between" },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-sm shadow-none btn-primary col-2",
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  return _vm.submit.apply(null, arguments)
+                },
+              },
+            },
+            [_vm._v("\n        Create\n      ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-sm shadow-none btn-secondary col-2",
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  return _vm.reset.apply(null, arguments)
+                },
+              },
+            },
+            [_vm._v("\n        Reset\n      ")]
+          ),
+        ]
+      ),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -27766,30 +27828,6 @@ var staticRenderFns = [
       { staticClass: "form-select text-center shadow-none" },
       [_c("option", { attrs: { value: "1" } }, [_vm._v("Welcome")])]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-footer" }, [
-      _c(
-        "div",
-        { staticClass: "row align-items-center justify-content-between" },
-        [
-          _c(
-            "button",
-            { staticClass: "btn btn-sm shadow-none btn-primary col-2" },
-            [_vm._v("Create")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-sm shadow-none btn-secondary col-2" },
-            [_vm._v("\n        Reset\n      ")]
-          ),
-        ]
-      ),
-    ])
   },
 ]
 render._withStripped = true
