@@ -28,7 +28,7 @@
                   form.bgImg != 0 &&
                   form.bgImg != '0'
                 "
-                @click.prevent="form.bgImg = null"
+                @click.prevent="close"
               ></button>
             </div>
             <select class="form-select text-center shadow-none">
@@ -79,23 +79,27 @@ export default {
       this.form.bgImg = null;
       this.$refs.bgImg.value = null;
     },
-  },
-  computed: {
-    edit() {
-      this.$set(
-        this.form,
-        "bgImg",
-        (this.$store.getters.editableHomeData.bgImg = null)
-      );
+    close() {
+      this.form.bgImg = null;
+      this.$refs.bgImg.value = null;
     },
   },
+  // computed: {
+  //   edit() {
+  //     this.$set(
+  //       this.form,
+  //       "bgImg",
+  //       (this.$store.getters.editableHomeData.bgImg = null)
+  //     );
+  //   },
+  // },
   mounted() {
     // axios.get("api/editHomeData" + this.$route.params.id).then((r) => {
     //     this.$set(this, "form", r.data.editData);
     //     this.form.bgImg = null;
     // });
     this.$store.dispatch("editableHomeData", this.$route.params.id);
-    // this.$set(this, "form", this.$store.getters.editableHomeData);
+    this.$set(this.form, "bgImg", this.$store.getters.editableHomeData.bgImg = null);
   },
 };
 </script>

@@ -42,6 +42,11 @@ class HomeController extends Controller
         $img->move(public_path('frontEnd/assets/img/home/bg'), $imgName);
         $bgImg = 'frontEnd/assets/img/home/bg/' . $imgName;
         $home->bgImg = $bgImg;
+        $home->bgColor = $request->bgColor;
+        $home->bgOpacity = $request->bgOpacity;
+        $home->name = $request->name;
+        $home->focusTitle = $request->focusTitle;
+        $home->shortDescription = $request->shortDescription;
         $home->save();
     }
 
@@ -91,6 +96,11 @@ class HomeController extends Controller
             $bgImg = 'frontEnd/assets/img/home/bg/' . $imgName;
             $home->bgImg = $bgImg;
         }
+        $home->bgColor = $request->bgColor;
+        $home->bgOpacity = $request->bgOpacity;
+        $home->name = $request->name;
+        $home->focusTitle = $request->focusTitle;
+        $home->shortDescription = $request->shortDescription;
         $home->update();
     }
 

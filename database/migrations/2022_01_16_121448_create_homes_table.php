@@ -16,6 +16,11 @@ class CreateHomesTable extends Migration
         Schema::create('homes', function (Blueprint $table) {
             $table->id();
             $table->string('bgImg');
+            $table->enum('bgColor',['primary','secondary','success','danger','warning','info','light','dark','black']);
+            $table->enum('bgOpacity',['0','25','50','75','100']);
+            $table->string('name');
+            $table->string('focusTitle');
+            $table->string('shortDescription');
             $table->timestamps();
         });
     }
