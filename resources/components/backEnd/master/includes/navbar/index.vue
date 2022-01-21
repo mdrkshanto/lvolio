@@ -16,7 +16,7 @@
         <router-link
           :to="{ name: 'adminHome' }"
           class="nav-link"
-          :class="$route.name === 'adminHome' || 'addHome' ? 'active' : ''"
+          :class="$route.name === 'adminHome' || 'addHome' ? 'active' || 'editHome' : ''"
           >Home</router-link
         >
       </li>

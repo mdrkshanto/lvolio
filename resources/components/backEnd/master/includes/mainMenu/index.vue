@@ -1,6 +1,5 @@
 <template>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
     <a href="../../index3.html" class="brand-link">
       <img
         src="backEnd/assets/dist/img/AdminLTELogo.png"
@@ -10,10 +9,7 @@
       />
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
-
-    <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img
@@ -26,8 +22,6 @@
           <a href="#" class="d-block">Alexander Pierce</a>
         </div>
       </div>
-
-      <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input
@@ -43,18 +37,9 @@
           </div>
         </div>
       </div>
-
-      <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul
-          class="nav nav-pills nav-sidebar flex-column"
-          data-widget="treeview"
-          role="menu"
-          data-accordion="false"
-        >
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
+        <ul class="nav nav-pills nav-sidebar flex-column">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -82,11 +67,23 @@
                 </a>
               </li>
             </ul>
+          </li> -->
+          <li class="nav-item">
+            <router-link
+              :to="{ name: `adminHome` }"
+              class="nav-link"
+              :class="
+                $route.name === `adminHome` || `addHome` || `editHome`
+                  ? 'bg-secondary active'
+                  : ''
+              "
+            >
+              <i class="fas fa-igloo"></i>
+              <p>Home</p>
+            </router-link>
           </li>
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
 </template>

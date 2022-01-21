@@ -2430,9 +2430,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
 /* harmony import */ var _VueRoutes_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../VueRoutes/routes */ "./resources/VueRoutes/routes.js");
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // import Vuex from 'vuex'
-// Vue.use(Vuex)
-
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 window.Form = vform__WEBPACK_IMPORTED_MODULE_0__["default"];
@@ -28490,7 +28488,47 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "aside",
+    { staticClass: "main-sidebar sidebar-dark-primary elevation-4" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "sidebar" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _c("nav", { staticClass: "mt-2" }, [
+          _c("ul", { staticClass: "nav nav-pills nav-sidebar flex-column" }, [
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link",
+                    class:
+                      _vm.$route.name === "adminHome" || "addHome" || 0
+                        ? "bg-secondary active"
+                        : 0,
+                    attrs: { to: { name: "adminHome" } },
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-igloo" }),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Home")]),
+                  ]
+                ),
+              ],
+              1
+            ),
+          ]),
+        ]),
+      ]),
+    ]
+  )
 }
 var staticRenderFns = [
   function () {
@@ -28498,148 +28536,75 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "aside",
-      { staticClass: "main-sidebar sidebar-dark-primary elevation-4" },
+      "a",
+      { staticClass: "brand-link", attrs: { href: "../../index3.html" } },
       [
-        _c(
-          "a",
-          { staticClass: "brand-link", attrs: { href: "../../index3.html" } },
-          [
-            _c("img", {
-              staticClass: "brand-image img-circle elevation-3",
-              staticStyle: { opacity: "0.8" },
-              attrs: {
-                src: "backEnd/assets/dist/img/AdminLTELogo.png",
-                alt: "AdminLTE Logo",
-              },
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "brand-text font-weight-light" }, [
-              _vm._v("AdminLTE 3"),
-            ]),
-          ]
-        ),
+        _c("img", {
+          staticClass: "brand-image img-circle elevation-3",
+          staticStyle: { opacity: "0.8" },
+          attrs: {
+            src: "backEnd/assets/dist/img/AdminLTELogo.png",
+            alt: "AdminLTE Logo",
+          },
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "sidebar" }, [
-          _c("div", { staticClass: "user-panel mt-3 pb-3 mb-3 d-flex" }, [
-            _c("div", { staticClass: "image" }, [
-              _c("img", {
-                staticClass: "img-circle elevation-2",
-                attrs: {
-                  src: "backEnd/assets/dist/img/user2-160x160.jpg",
-                  alt: "User Image",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "info" }, [
-              _c("a", { staticClass: "d-block", attrs: { href: "#" } }, [
-                _vm._v("Alexander Pierce"),
-              ]),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-inline" }, [
-            _c(
-              "div",
-              {
-                staticClass: "input-group",
-                attrs: { "data-widget": "sidebar-search" },
-              },
-              [
-                _c("input", {
-                  staticClass: "form-control form-control-sidebar",
-                  attrs: {
-                    type: "search",
-                    placeholder: "Search",
-                    "aria-label": "Search",
-                  },
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group-append" }, [
-                  _c("button", { staticClass: "btn btn-sidebar" }, [
-                    _c("i", { staticClass: "fas fa-search fa-fw" }),
-                  ]),
-                ]),
-              ]
-            ),
-          ]),
-          _vm._v(" "),
-          _c("nav", { staticClass: "mt-2" }, [
-            _c(
-              "ul",
-              {
-                staticClass: "nav nav-pills nav-sidebar flex-column",
-                attrs: {
-                  "data-widget": "treeview",
-                  role: "menu",
-                  "data-accordion": "false",
-                },
-              },
-              [
-                _c("li", { staticClass: "nav-item" }, [
-                  _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                    _c("i", { staticClass: "nav-icon fas fa-tachometer-alt" }),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v("\n              Dashboard\n              "),
-                      _c("i", { staticClass: "right fas fa-angle-left" }),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "nav nav-treeview" }, [
-                    _c("li", { staticClass: "nav-item" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "nav-link",
-                          attrs: { href: "../../index.html" },
-                        },
-                        [
-                          _c("i", { staticClass: "far fa-circle nav-icon" }),
-                          _vm._v(" "),
-                          _c("p", [_vm._v("Dashboard v1")]),
-                        ]
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "nav-item" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "nav-link",
-                          attrs: { href: "../../index2.html" },
-                        },
-                        [
-                          _c("i", { staticClass: "far fa-circle nav-icon" }),
-                          _vm._v(" "),
-                          _c("p", [_vm._v("Dashboard v2")]),
-                        ]
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "nav-item" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "nav-link",
-                          attrs: { href: "../../index3.html" },
-                        },
-                        [
-                          _c("i", { staticClass: "far fa-circle nav-icon" }),
-                          _vm._v(" "),
-                          _c("p", [_vm._v("Dashboard v3")]),
-                        ]
-                      ),
-                    ]),
-                  ]),
-                ]),
-              ]
-            ),
-          ]),
+        _c("span", { staticClass: "brand-text font-weight-light" }, [
+          _vm._v("AdminLTE 3"),
         ]),
       ]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "user-panel mt-3 pb-3 mb-3 d-flex" }, [
+      _c("div", { staticClass: "image" }, [
+        _c("img", {
+          staticClass: "img-circle elevation-2",
+          attrs: {
+            src: "backEnd/assets/dist/img/user2-160x160.jpg",
+            alt: "User Image",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info" }, [
+        _c("a", { staticClass: "d-block", attrs: { href: "#" } }, [
+          _vm._v("Alexander Pierce"),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-inline" }, [
+      _c(
+        "div",
+        {
+          staticClass: "input-group",
+          attrs: { "data-widget": "sidebar-search" },
+        },
+        [
+          _c("input", {
+            staticClass: "form-control form-control-sidebar",
+            attrs: {
+              type: "search",
+              placeholder: "Search",
+              "aria-label": "Search",
+            },
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group-append" }, [
+            _c("button", { staticClass: "btn btn-sidebar" }, [
+              _c("i", { staticClass: "fas fa-search fa-fw" }),
+            ]),
+          ]),
+        ]
+      ),
+    ])
   },
 ]
 render._withStripped = true
@@ -28683,7 +28648,9 @@ var render = function () {
               {
                 staticClass: "nav-link",
                 class:
-                  _vm.$route.name === "adminHome" || "addHome" ? "active" : 0,
+                  _vm.$route.name === "adminHome" || "addHome"
+                    ? "active" || 0
+                    : 0,
                 attrs: { to: { name: "adminHome" } },
               },
               [_vm._v("Home")]
