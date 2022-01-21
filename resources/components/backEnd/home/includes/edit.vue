@@ -65,13 +65,14 @@ export default {
     return {
       form: new Form({
         bgImg: null,
+        _method: "put",
       }),
     };
   },
   methods: {
     submit() {
-      axios.post("api/updateHome" + this.$route.params.id, this.form).then((r) => {
-        console.log(r);
+      this.form.post("api/updateHome" + this.$route.params.id).then((r) => {
+        this.$router.push({ name: "adminHome" });
       });
     },
     reset() {
@@ -79,10 +80,22 @@ export default {
       this.$refs.bgImg.value = null;
     },
   },
+  computed: {
+    edit() {
+      this.$set(
+        this.form,
+        "bgImg",
+        (this.$store.getters.editableHomeData.bgImg = null)
+      );
+    },
+  },
   mounted() {
-    axios.get("api/editHomeData" + this.$route.params.id).then((res) => {
-      this.$set(this, "form", res.data.editData);
-    });
+    // axios.get("api/editHomeData" + this.$route.params.id).then((r) => {
+    //     this.$set(this, "form", r.data.editData);
+    //     this.form.bgImg = null;
+    // });
+    this.$store.dispatch("editableHomeData", this.$route.params.id);
+    // this.$set(this, "form", this.$store.getters.editableHomeData);
   },
 };
 </script>

@@ -70,7 +70,7 @@ class HomeController extends Controller
     {
         $home = Home::find($id);
         return response()->json(["editData" => $home], 200);
-        return view('backEnd');
+        // return view('backEnd');
     }
 
     /**
@@ -83,15 +83,15 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         $home = Home::find($id);
-        if ($request->file('bgImg')) {
+        if ($request->hasFile('bgImg')) {
             unlink($home->bgImg);
             $img = $request->file('bgImg');
             $imgName = time() . rand() . '.' . $img->extension();
             $img->move(public_path('frontEnd/assets/img/home/bg'), $imgName);
             $bgImg = 'frontEnd/assets/img/home/bg/' . $imgName;
             $home->bgImg = $bgImg;
-            $home->save();
         }
+        $home->update();
     }
 
     /**

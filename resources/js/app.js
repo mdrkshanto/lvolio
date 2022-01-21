@@ -1,13 +1,18 @@
 require('./bootstrap');
 
 
+// import Vuex from 'vuex'
 
+// Vue.use(Vuex)
 
 import Form from "vform";
 window.Form = Form;
 
-
 Vue.component("Admin", require("../components/backEnd/master/index").default)
+
+import storeData from "./store"
+const store = new Vuex.Store(storeData)
+
 
 import { routes } from '../VueRoutes/routes';
 const router = new VueRouter({
@@ -15,9 +20,13 @@ const router = new VueRouter({
     routes
 })
 
+
+
+
+
 router.beforeEach((to, from, next) => {
     document.title = 'Shanto' + ' | ' + to.meta.title
     next()
 })
 
-new Vue({ router }).$mount("#app")
+new Vue({ router, store }).$mount("#app")

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('addHome', [HomeController::class, 'store']);
 Route::get('editHomeData{id}', [HomeController::class, 'edit']);
-Route::post('updateHome{id}', [HomeController::class, 'update']);
+Route::put('updateHome{id}', [HomeController::class, 'update']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
