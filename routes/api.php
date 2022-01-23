@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('editHomeData{id}', [ApiController::class, 'editHome']);
+Route::post('latestHomeData', [ApiController::class, 'latestHomeData']);
+Route::post('allHomeData', [ApiController::class, 'allHomeData']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

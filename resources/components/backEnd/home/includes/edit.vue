@@ -88,12 +88,17 @@
       </div>
     </div>
     <div class="my-3 col-2">
-          <label class="form-label">Edit Count</label>
-          <div class="input-group input-group-sm outline-none border-none row">
-              <span class="col">{{ form.editCount }}</span>
-              <button class="btn btn-sm btn-primary shadow-none col" @click.once="form.editCount++"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
+      <label class="form-label">Edit Count</label>
+      <div class="input-group input-group-sm outline-none border-none row">
+        <span class="col">{{ form.editCount }}</span>
+        <button
+          class="btn btn-sm btn-primary shadow-none col"
+          @click.once="form.editCount++"
+        >
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+    </div>
     <div class="card-footer">
       <div class="row align-items-center justify-content-between">
         <button
