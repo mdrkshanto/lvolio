@@ -169,17 +169,6 @@ export default {
     },
   },
   mounted() {
-    // this.$store.dispatch("editableHomeData", this.$route.params.id);
-    // this.$set(
-    //   this.form,
-    //   "bgImg",
-    //   (this.$store.getters.editableHomeData.bgImg = null)
-    // );
-    // this.$set(
-    //   this.form,
-    //   "bgColor",
-    //   this.$store.getters.editableHomeData.bgColor
-    // );
     axios.post("api/editHomeData" + this.$route.params.id).then((r) => {
       this.$set(this.form, "bgImg", (r.data.editData.bgImg = null));
       this.$set(this.form, "bgColor", r.data.editData.bgColor);

@@ -17,4 +17,9 @@ class ApiController extends Controller
         $home = Home::latest('updated_at')->first();
         return response()->json(['latestHomeData' => $home], 200);
     }
+    public function allHomeData()
+    {
+        $home = Home::all();
+        return response()->json(['allHomeData' => $home], 200);
+    }
 }

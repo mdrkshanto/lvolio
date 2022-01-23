@@ -2484,17 +2484,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    // this.$store.dispatch("editableHomeData", this.$route.params.id);
-    // this.$set(
-    //   this.form,
-    //   "bgImg",
-    //   (this.$store.getters.editableHomeData.bgImg = null)
-    // );
-    // this.$set(
-    //   this.form,
-    //   "bgColor",
-    //   this.$store.getters.editableHomeData.bgColor
-    // );
     axios.post("api/editHomeData" + this.$route.params.id).then(function (r) {
       _this2.$set(_this2.form, "bgImg", r.data.editData.bgImg = null);
 
