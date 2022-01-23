@@ -3,21 +3,20 @@ export default {
         data: []
     },
     getters: {
-        editableHomeData(state) {
+        allHomeData(state) {
             return state.data
         }
     },
     actions: {
-        editableHomeData(context, payload) {
-            console.log(payload);
-            axios.post("api/editHomeData" + payload).then((r) => {
-                context.commit('editableHomeData', r.data.editData);
-                console.log(r.data.editData);
+        allHomeData(context) {
+            axios.post("api/allHomeData").then((r) => {
+                context.commit('allHomeData', r.data.allHomeData);
+                console.log(r.data.allHomeData);
             });
         }
     },
     mutations: {
-        editableHomeData(state, payload) {
+        allHomeData(state, payload) {
             return state.data = payload
         }
     },

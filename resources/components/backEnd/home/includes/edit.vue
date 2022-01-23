@@ -89,10 +89,10 @@
     </div>
     <div class="my-3 col-2">
       <label class="form-label">Edit Count</label>
-      <div class="input-group input-group-sm outline-none border-none row">
-        <span class="col">{{ form.editCount }}</span>
+      <div class="input-group input-group-sm">
+        <span class="px-4">{{ null || 0 >= form.editCount ? 0 : form.editCount }}</span>
         <button
-          class="btn btn-sm btn-primary shadow-none col"
+          class="btn btn-sm btn-success shadow-none"
           @click.once="form.editCount++"
         >
           <i class="fas fa-plus"></i>
@@ -105,7 +105,7 @@
           class="btn btn-sm shadow-none btn-primary col-2"
           @click.prevent="submit"
         >
-          Create
+          Update
         </button>
         <button
           class="btn btn-sm shadow-none btn-secondary col-2"

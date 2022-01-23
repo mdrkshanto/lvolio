@@ -21,6 +21,7 @@ class CreateHomesTable extends Migration
             $table->string('name');
             $table->string('focusTitle');
             $table->string('shortDescription');
+            $table->integer('editCount')->nullable();
             $table->timestamps();
         });
     }

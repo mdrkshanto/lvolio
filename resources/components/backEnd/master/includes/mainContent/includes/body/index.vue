@@ -1,6 +1,6 @@
 <template>
   <section class="content">
-    <div class="card">
+    <div class="card m-0">
       <Header />
       <router-view />
     </div>
