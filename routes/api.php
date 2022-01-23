@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('addHome', [HomeController::class, 'store']);
-Route::get('editHomeData{id}', [HomeController::class, 'edit']);
-Route::put('updateHome{id}', [HomeController::class, 'update']);
+
+Route::post('editHomeData{id}', [ApiController::class, 'editHome']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

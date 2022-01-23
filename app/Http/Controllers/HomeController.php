@@ -67,15 +67,15 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function editHome()
+    // public function editHome()
+    // {
+    //     return view('backEnd');
+    // }
+    public function edit()
     {
+        // $home = Home::find($id);
+        // return response()->json(["editData" => $home], 200);
         return view('backEnd');
-    }
-    public function edit($id)
-    {
-        $home = Home::find($id);
-        return response()->json(["editData" => $home], 200);
-        // return view('backEnd');
     }
 
     /**
@@ -89,12 +89,12 @@ class HomeController extends Controller
     {
         $home = Home::find($id);
         if ($request->hasFile('bgImg')) {
-            unlink($home->bgImg);
             $img = $request->file('bgImg');
             $imgName = time() . rand() . '.' . $img->extension();
             $img->move(public_path('frontEnd/assets/img/home/bg'), $imgName);
             $bgImg = 'frontEnd/assets/img/home/bg/' . $imgName;
             $home->bgImg = $bgImg;
+            unlink($home->bgImg);
         }
         $home->bgColor = $request->bgColor;
         $home->bgOpacity = $request->bgOpacity;

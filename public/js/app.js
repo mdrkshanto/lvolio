@@ -2065,8 +2065,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2176,8 +2174,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    var _Form;
-
     return {
       bgColors: [{
         value: null,
@@ -2229,11 +2225,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         value: "100",
         text: "100%"
       }],
-      form: new Form((_Form = {
+      form: new Form({
         bgImg: null,
         bgColor: null,
-        bgOpacity: null
-      }, _defineProperty(_Form, "bgOpacity", null), _defineProperty(_Form, "name", null), _defineProperty(_Form, "focusTitle", null), _defineProperty(_Form, "shortDescription", null), _Form))
+        bgOpacity: null,
+        name: null,
+        focusTitle: null,
+        shortDescription: null
+      })
     };
   },
   methods: {
@@ -2253,7 +2252,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     submit: function submit() {
       var _this = this;
 
-      this.form.post("api/addHome").then(function () {
+      this.form.post("/addHome").then(function () {
         _this.form.bgImg = null;
         _this.form.bgColor = null;
         _this.form.bgOpacity = null;
@@ -2340,50 +2339,175 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      bgColors: [{
+        value: null,
+        text: "Background Color"
+      }, {
+        value: "primary",
+        text: "Blue"
+      }, {
+        value: "secondary",
+        text: "Gray"
+      }, {
+        value: "success",
+        text: "Green"
+      }, {
+        value: "danger",
+        text: "Red"
+      }, {
+        value: "warning",
+        text: "Yellow"
+      }, {
+        value: "info",
+        text: "Sky"
+      }, {
+        value: "light",
+        text: "White"
+      }, {
+        value: "dark",
+        text: "Dark"
+      }, {
+        value: "black",
+        text: "Black"
+      }],
+      bgOpacities: [{
+        value: null,
+        text: "Opacity"
+      }, {
+        value: "0",
+        text: "0%"
+      }, {
+        value: "25",
+        text: "25%"
+      }, {
+        value: "50",
+        text: "50%"
+      }, {
+        value: "75",
+        text: "75%"
+      }, {
+        value: "100",
+        text: "100%"
+      }],
       form: new Form({
+        _method: "put",
         bgImg: null,
-        _method: "put"
+        bgColor: null,
+        bgOpacity: null,
+        name: null,
+        focusTitle: null,
+        shortDescription: null,
+        editCount: null
       })
     };
   },
   methods: {
-    submit: function submit() {
-      var _this = this;
-
-      this.form.post("api/updateHome" + this.$route.params.id).then(function (r) {
-        _this.$router.push({
-          name: "adminHome"
-        });
-      });
-    },
     reset: function reset() {
       this.form.bgImg = null;
+      this.form.bgColor = null;
+      this.form.bgOpacity = null;
+      this.form.name = null;
+      this.form.focusTitle = null;
+      this.form.shortDescription = null;
       this.$refs.bgImg.value = null;
     },
     close: function close() {
       this.form.bgImg = null;
       this.$refs.bgImg.value = null;
+    },
+    submit: function submit() {
+      var _this = this;
+
+      this.form.post("/updateHome" + this.$route.params.id).then(function () {
+        _this.$router.push({
+          name: "adminHome"
+        });
+      });
     }
   },
-  // computed: {
-  //   edit() {
-  //     this.$set(
-  //       this.form,
-  //       "bgImg",
-  //       (this.$store.getters.editableHomeData.bgImg = null)
-  //     );
-  //   },
-  // },
   mounted: function mounted() {
-    // axios.get("api/editHomeData" + this.$route.params.id).then((r) => {
-    //     this.$set(this, "form", r.data.editData);
-    //     this.form.bgImg = null;
-    // });
-    this.$store.dispatch("editableHomeData", this.$route.params.id);
-    this.$set(this.form, "bgImg", this.$store.getters.editableHomeData.bgImg = null);
+    var _this2 = this;
+
+    // this.$store.dispatch("editableHomeData", this.$route.params.id);
+    // this.$set(
+    //   this.form,
+    //   "bgImg",
+    //   (this.$store.getters.editableHomeData.bgImg = null)
+    // );
+    // this.$set(
+    //   this.form,
+    //   "bgColor",
+    //   this.$store.getters.editableHomeData.bgColor
+    // );
+    axios.post("api/editHomeData" + this.$route.params.id).then(function (r) {
+      _this2.$set(_this2.form, "bgImg", r.data.editData.bgImg = null);
+
+      _this2.$set(_this2.form, "bgColor", r.data.editData.bgColor);
+
+      _this2.$set(_this2.form, "bgOpacity", r.data.editData.bgOpacity);
+
+      _this2.$set(_this2.form, "name", r.data.editData.name);
+
+      _this2.$set(_this2.form, "focusTitle", r.data.editData.focusTitle);
+
+      _this2.$set(_this2.form, "shortDescription", r.data.editData.shortDescription);
+    });
   }
 });
 
@@ -2627,17 +2751,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: {
-    editableHomeData: []
+    data: []
   },
   getters: {
     editableHomeData: function editableHomeData(state) {
-      return state.editableHomeData;
+      return state.data;
     }
   },
   actions: {
     editableHomeData: function editableHomeData(context, payload) {
       console.log(payload);
-      axios.get("api/editHomeData" + payload).then(function (r) {
+      axios.post("api/editHomeData" + payload).then(function (r) {
         context.commit('editableHomeData', r.data.editData);
         console.log(r.data.editData);
       });
@@ -2645,7 +2769,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mutations: {
     editableHomeData: function editableHomeData(state, payload) {
-      return state.editableHomeData = payload;
+      return state.data = payload;
     }
   }
 });
@@ -9514,7 +9638,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.btn-close[data-v-3b6f47ac] {\n  right: -1.4rem;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.btn-close[data-v-3b6f47ac] {\n  right: -1.4rem;\n}\ntextarea[data-v-3b6f47ac] {\n  resize: none;\n  height: 10rem !important;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28443,7 +28567,7 @@ var render = function () {
   return _c("div", { staticClass: "card-wrap" }, [
     _c("div", { staticClass: "card-body" }, [
       _c("div", { staticClass: "container col-8" }, [
-        _c("div", { staticClass: "my-4" }, [
+        _c("div", { staticClass: "my-3" }, [
           _c("label", { staticClass: "form-label" }, [
             _vm._v("Background Image"),
           ]),
@@ -28452,7 +28576,7 @@ var render = function () {
             _c("div", { staticClass: "position-relative" }, [
               _c("input", {
                 ref: "bgImg",
-                staticClass: "form-control shadow-none",
+                staticClass: "form-control form-control-sm shadow-none",
                 attrs: { type: "file", accept: "image/webp" },
                 on: {
                   change: function ($event) {
@@ -28478,12 +28602,215 @@ var render = function () {
                 : _vm._e(),
             ]),
             _vm._v(" "),
-            _vm._m(0),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.bgColor,
+                    expression: "form.bgColor",
+                  },
+                ],
+                staticClass:
+                  "form-select form-select-sm text-center shadow-none",
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.form,
+                      "bgColor",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                },
+              },
+              _vm._l(_vm.bgColors, function (bgColor) {
+                return _c(
+                  "option",
+                  { key: bgColor.value, domProps: { value: bgColor.value } },
+                  [
+                    _vm._v(
+                      "\n              " +
+                        _vm._s(bgColor.text) +
+                        "\n            "
+                    ),
+                  ]
+                )
+              }),
+              0
+            ),
             _vm._v(" "),
-            _vm._m(1),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.bgOpacity,
+                    expression: "form.bgOpacity",
+                  },
+                ],
+                staticClass:
+                  "form-select form-select-sm text-center shadow-none",
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.form,
+                      "bgOpacity",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                },
+              },
+              _vm._l(_vm.bgOpacities, function (bgOpacity) {
+                return _c(
+                  "option",
+                  {
+                    key: bgOpacity.value,
+                    domProps: { value: bgOpacity.value },
+                  },
+                  [
+                    _vm._v(
+                      "\n              " +
+                        _vm._s(bgOpacity.text) +
+                        "\n            "
+                    ),
+                  ]
+                )
+              }),
+              0
+            ),
           ]),
         ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-3" }, [
+          _c("label", { staticClass: "form-label" }, [_vm._v("Name")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.name,
+                expression: "form.name",
+              },
+            ],
+            staticClass: "form-control form-control-sm",
+            attrs: { type: "text", placeholder: "Full Name" },
+            domProps: { value: _vm.form.name },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "name", $event.target.value)
+              },
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-3" }, [
+          _c("label", { staticClass: "form-label" }, [_vm._v("Focus Title")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.focusTitle,
+                expression: "form.focusTitle",
+              },
+            ],
+            staticClass: "form-control form-control-sm",
+            attrs: { type: "text", placeholder: "Focus Title" },
+            domProps: { value: _vm.form.focusTitle },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "focusTitle", $event.target.value)
+              },
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-3" }, [
+          _c("label", { staticClass: "form-label" }, [
+            _vm._v("Short Description"),
+          ]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.shortDescription,
+                expression: "form.shortDescription",
+              },
+            ],
+            staticClass: "form-control form-control-sm",
+            attrs: { placeholder: "Short Description" },
+            domProps: { value: _vm.form.shortDescription },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "shortDescription", $event.target.value)
+              },
+            },
+          }),
+        ]),
       ]),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "my-3 col-2" }, [
+      _c("label", { staticClass: "form-label" }, [_vm._v("Edit Count")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "input-group input-group-sm outline-none border-none row",
+        },
+        [
+          _c("span", { staticClass: "col" }, [
+            _vm._v(_vm._s(_vm.form.editCount)),
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-sm btn-primary shadow-none col",
+              on: {
+                "~click": function ($event) {
+                  _vm.form.editCount++
+                },
+              },
+            },
+            [_c("i", { staticClass: "fas fa-plus" })]
+          ),
+        ]
+      ),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-footer" }, [
@@ -28523,28 +28850,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      { staticClass: "form-select text-center shadow-none" },
-      [_c("option", { attrs: { value: "1" } }, [_vm._v("Welcome")])]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      { staticClass: "form-select text-center shadow-none" },
-      [_c("option", { attrs: { value: "1" } }, [_vm._v("Welcome")])]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -28580,22 +28886,54 @@ var staticRenderFns = [
           "table",
           {
             staticClass:
-              "\n        table table-dark\n        bg-black\n        table-sm table-striped table-borderless\n        rounded\n      ",
+              "table table-dark table-sm table-striped table-hover table-borderless text-center",
           },
           [
             _c("thead", [
               _c("tr", [
-                _c("th", [_vm._v("#")]),
+                _c("th", { staticClass: "align-middle" }, [_vm._v("#")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Name")]),
+                _c("th", { staticClass: "align-middle" }, [
+                  _vm._v("Background"),
+                ]),
+                _vm._v(" "),
+                _c("th", { staticClass: "align-middle" }, [_vm._v("Name")]),
+                _vm._v(" "),
+                _c("th", { staticClass: "align-middle" }, [
+                  _vm._v("Focus Title"),
+                ]),
+                _vm._v(" "),
+                _c("th", { staticClass: "align-middle" }, [
+                  _vm._v("Short Description"),
+                ]),
+                _vm._v(" "),
+                _c("th", { staticClass: "align-middle" }, [_vm._v("Action")]),
               ]),
             ]),
             _vm._v(" "),
             _c("tbody", [
               _c("tr", [
-                _c("td", [_vm._v("1")]),
+                _c("th", { staticClass: "align-middle" }, [_vm._v("1")]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Jamal")]),
+                _c("td", { staticClass: "align-middle" }, [
+                  _vm._v("Background"),
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "align-middle" }, [
+                  _vm._v("Background"),
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "align-middle" }, [
+                  _vm._v("Background"),
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "align-middle" }, [
+                  _vm._v("Background"),
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "align-middle" }, [
+                  _vm._v("Background"),
+                ]),
               ]),
             ]),
           ]

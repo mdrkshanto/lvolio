@@ -2,12 +2,12 @@
   <div class="card-wrap">
     <div class="card-body">
       <div class="container col-8">
-        <div class="my-3">
+        <div class="my-4">
           <label class="form-label">Background Image</label>
           <div class="input-group input-group-sm">
             <div class="position-relative">
               <input
-                class="form-control form-control-sm shadow-none"
+                class="form-control shadow-none"
                 type="file"
                 accept="image/webp"
                 @change="form.bgImg = $event.target.files[0]"
@@ -31,59 +31,13 @@
                 @click.prevent="close"
               ></button>
             </div>
-            <select
-              class="form-select form-select-sm text-center shadow-none"
-              v-model="form.bgColor"
-            >
-              <option
-                v-for="bgColor in bgColors"
-                :value="bgColor.value"
-                :key="bgColor.value"
-              >
-                {{ bgColor.text }}
-              </option>
+            <select class="form-select text-center shadow-none">
+              <option value="1">Welcome</option>
             </select>
-            <select
-              class="form-select form-select-sm text-center shadow-none"
-              v-model="form.bgOpacity"
-            >
-              <option
-                v-for="bgOpacity in bgOpacities"
-                :key="bgOpacity.value"
-                :value="bgOpacity.value"
-              >
-                {{ bgOpacity.text }}
-              </option>
+            <select class="form-select text-center shadow-none">
+              <option value="1">Welcome</option>
             </select>
           </div>
-        </div>
-        <div class="my-3">
-          <label class="form-label">Name</label>
-          <input
-            class="form-control form-control-sm"
-            type="text"
-            placeholder="Full Name"
-            v-model="form.name"
-          />
-        </div>
-
-        <div class="my-3">
-          <label class="form-label">Focus Title</label>
-          <input
-            class="form-control form-control-sm"
-            type="text"
-            placeholder="Focus Title"
-            v-model="form.focusTitle"
-          />
-        </div>
-
-        <div class="my-3">
-          <label class="form-label">Short Description</label>
-          <textarea
-            class="form-control form-control-sm"
-            placeholder="Short Description"
-            v-model="form.shortDescription"
-          />
         </div>
       </div>
     </div>
@@ -133,6 +87,7 @@ export default {
         bgImg: null,
         bgColor: null,
         bgOpacity: null,
+        bgOpacity: null,
         name: null,
         focusTitle: null,
         shortDescription: null,
@@ -140,40 +95,43 @@ export default {
     };
   },
   methods: {
+    submit() {
+      this.form.post("api/updateHome" + this.$route.params.id).then((r) => {
+        this.$router.push({ name: "adminHome" });
+      });
+    },
     reset() {
       this.form.bgImg = null;
-      this.form.bgColor = null;
-      this.form.bgOpacity = null;
-      this.form.name = null;
-      this.form.focusTitle = null;
-      this.form.shortDescription = null;
       this.$refs.bgImg.value = null;
     },
     close() {
       this.form.bgImg = null;
       this.$refs.bgImg.value = null;
     },
-    submit() {
-      this.form.post("/addHome").then(() => {
-        this.form.bgImg = null;
-        this.form.bgColor = null;
-        this.form.bgOpacity = null;
-        this.form.name = null;
-        this.form.focusTitle = null;
-        this.form.shortDescription = null;
-        this.$refs.bgImg.value = null;
-      });
-    },
+  },
+  // computed: {
+  //   edit() {
+  //     this.$set(
+  //       this.form,
+  //       "bgImg",
+  //       (this.$store.getters.editableHomeData.bgImg = null)
+  //     );
+  //   },
+  // },
+  mounted() {
+    // axios.get("api/editHomeData" + this.$route.params.id).then((r) => {
+    //     this.$set(this, "form", r.data.editData);
+    //     this.form.bgImg = null;
+    // });
+    this.$store.dispatch("editableHomeData", this.$route.params.id);
+    this.$set(this.form, "bgImg", this.$store.getters.editableHomeData.bgImg = null);
+    this.$set(this.form, "bgImg", this.$store.getters.editableHomeData.bgImg = null);
   },
 };
 </script>
 <style scoped>
 .btn-close {
   right: -1.4rem;
-}
-textarea {
-  resize: none;
-  height: 10rem !important;
 }
 </style>
 
