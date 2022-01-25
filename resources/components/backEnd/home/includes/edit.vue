@@ -85,20 +85,42 @@
             v-model="form.shortDescription"
           />
         </div>
+        <div class="col-6 mx-auto">
+          <div class="row justify-content-center align-items-center">
+            <div class="my-3 col">
+              <label class="form-label">Status</label>
+              <select
+                class="form-select form-select-sm text-center shadow-none"
+                v-model="form.status"
+              >
+                <option
+                  v-for="status in statuses"
+                  :key="status.value"
+                  :value="status.value"
+                >
+                  {{ status.text }}
+                </option>
+              </select>
+            </div>
+            <div class="my-3 col">
+              <label class="form-label">Edit Count</label>
+              <div class="input-group input-group-sm">
+                <span class="px-4">{{
+                  null || 0 >= form.editCount ? 0 : form.editCount
+                }}</span>
+                <button
+                  class="btn btn-sm btn-success shadow-none"
+                  @click.once="form.editCount++"
+                >
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="my-3 col-2">
-      <label class="form-label">Edit Count</label>
-      <div class="input-group input-group-sm">
-        <span class="px-4">{{ null || 0 >= form.editCount ? 0 : form.editCount }}</span>
-        <button
-          class="btn btn-sm btn-success shadow-none"
-          @click.once="form.editCount++"
-        >
-          <i class="fas fa-plus"></i>
-        </button>
-      </div>
-    </div>
+
     <div class="card-footer">
       <div class="row align-items-center justify-content-between">
         <button
@@ -121,6 +143,11 @@
 export default {
   data() {
     return {
+      statuses: [
+        { value: null, text: "Status" },
+        { value: "active", text: "Active" },
+        { value: "inactive", text: "Inactive" },
+      ],
       bgColors: [
         { value: null, text: "Background Color" },
         { value: "primary", text: "Blue" },
@@ -149,6 +176,7 @@ export default {
         name: null,
         focusTitle: null,
         shortDescription: null,
+        status: null,
         editCount: null,
       }),
     };
@@ -175,16 +203,15 @@ export default {
   },
   mounted() {
     axios.post("api/editHomeData" + this.$route.params.id).then((r) => {
-      this.$set(this.form, "bgImg", (r.data.editData.bgImg = null));
-      this.$set(this.form, "bgColor", r.data.editData.bgColor);
-      this.$set(this.form, "bgOpacity", r.data.editData.bgOpacity);
-      this.$set(this.form, "name", r.data.editData.name);
-      this.$set(this.form, "focusTitle", r.data.editData.focusTitle);
-      this.$set(
-        this.form,
-        "shortDescription",
-        r.data.editData.shortDescription
-      );
+      let formData = r.data.editData;
+      this.$set(this.form, "bgImg", (formData.bgImg = null));
+      this.$set(this.form, "bgColor", formData.bgColor);
+      this.$set(this.form, "bgOpacity", formData.bgOpacity);
+      this.$set(this.form, "name", formData.name);
+      this.$set(this.form, "focusTitle", formData.focusTitle);
+      this.$set(this.form, "shortDescription", formData.shortDescription);
+      this.$set(this.form, "status", formData.status);
+      this.$set(this.form, "editCount", formData.editCount);
     });
   },
 };

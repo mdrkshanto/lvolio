@@ -47,6 +47,7 @@ class HomeController extends Controller
         $home->name = $request->name;
         $home->focusTitle = $request->focusTitle;
         $home->shortDescription = $request->shortDescription;
+        $home->status = $request->status;
         $home->save();
     }
 
@@ -101,6 +102,7 @@ class HomeController extends Controller
         $home->name = $request->name;
         $home->focusTitle = $request->focusTitle;
         $home->shortDescription = $request->shortDescription;
+        $home->status = $request->status;
         $home->editCount = $request->editCount;
         $home->update();
     }

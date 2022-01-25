@@ -85,6 +85,15 @@
             v-model="form.shortDescription"
           />
         </div>
+        <div class="col-3 mx-auto">
+          <div class="row justify-content-center align-items-center">
+            <div class="my-3 col">
+              <select class="form-select form-select-sm text-center shadow-none" v-model="form.status">
+                <option v-for="status in statuses" :key="status.value" :value="status.value">{{ status.text }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-footer">
@@ -109,6 +118,11 @@
 export default {
   data() {
     return {
+      statuses: [
+        { value: null, text: "Status" },
+        { value: "active", text: "Active" },
+        { value: "inactive", text: "Inactive" },
+      ],
       bgColors: [
         { value: null, text: "Background Color" },
         { value: "primary", text: "Blue" },
@@ -136,6 +150,7 @@ export default {
         name: null,
         focusTitle: null,
         shortDescription: null,
+        status: null,
       }),
     };
   },

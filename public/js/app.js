@@ -2172,9 +2172,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      statuses: [{
+        value: null,
+        text: "Status"
+      }, {
+        value: "active",
+        text: "Active"
+      }, {
+        value: "inactive",
+        text: "Inactive"
+      }],
       bgColors: [{
         value: null,
         text: "Background Color"
@@ -2231,7 +2250,8 @@ __webpack_require__.r(__webpack_exports__);
         bgOpacity: null,
         name: null,
         focusTitle: null,
-        shortDescription: null
+        shortDescription: null,
+        status: null
       })
     };
   },
@@ -2397,9 +2417,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      statuses: [{
+        value: null,
+        text: "Status"
+      }, {
+        value: "active",
+        text: "Active"
+      }, {
+        value: "inactive",
+        text: "Inactive"
+      }],
       bgColors: [{
         value: null,
         text: "Background Color"
@@ -2458,6 +2510,7 @@ __webpack_require__.r(__webpack_exports__);
         name: null,
         focusTitle: null,
         shortDescription: null,
+        status: null,
         editCount: null
       })
     };
@@ -2490,17 +2543,23 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     axios.post("api/editHomeData" + this.$route.params.id).then(function (r) {
-      _this2.$set(_this2.form, "bgImg", r.data.editData.bgImg = null);
+      var formData = r.data.editData;
 
-      _this2.$set(_this2.form, "bgColor", r.data.editData.bgColor);
+      _this2.$set(_this2.form, "bgImg", formData.bgImg = null);
 
-      _this2.$set(_this2.form, "bgOpacity", r.data.editData.bgOpacity);
+      _this2.$set(_this2.form, "bgColor", formData.bgColor);
 
-      _this2.$set(_this2.form, "name", r.data.editData.name);
+      _this2.$set(_this2.form, "bgOpacity", formData.bgOpacity);
 
-      _this2.$set(_this2.form, "focusTitle", r.data.editData.focusTitle);
+      _this2.$set(_this2.form, "name", formData.name);
 
-      _this2.$set(_this2.form, "shortDescription", r.data.editData.shortDescription);
+      _this2.$set(_this2.form, "focusTitle", formData.focusTitle);
+
+      _this2.$set(_this2.form, "shortDescription", formData.shortDescription);
+
+      _this2.$set(_this2.form, "status", formData.status);
+
+      _this2.$set(_this2.form, "editCount", formData.editCount);
     });
   }
 });
@@ -28935,6 +28994,59 @@ var render = function () {
             },
           }),
         ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3 mx-auto" }, [
+          _c(
+            "div",
+            { staticClass: "row justify-content-center align-items-center" },
+            [
+              _c("div", { staticClass: "my-3 col" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.status,
+                        expression: "form.status",
+                      },
+                    ],
+                    staticClass:
+                      "form-select form-select-sm text-center shadow-none",
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "status",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                    },
+                  },
+                  _vm._l(_vm.statuses, function (status) {
+                    return _c(
+                      "option",
+                      { key: status.value, domProps: { value: status.value } },
+                      [_vm._v(_vm._s(status.text))]
+                    )
+                  }),
+                  0
+                ),
+              ]),
+            ]
+          ),
+        ]),
       ]),
     ]),
     _vm._v(" "),
@@ -29214,31 +29326,96 @@ var render = function () {
             },
           }),
         ]),
-      ]),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "my-3 col-2" }, [
-      _c("label", { staticClass: "form-label" }, [_vm._v("Edit Count")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-group input-group-sm" }, [
-        _c("span", { staticClass: "px-4" }, [
-          _vm._v(
-            _vm._s( false || 0 >= _vm.form.editCount ? 0 : _vm.form.editCount)
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6 mx-auto" }, [
+          _c(
+            "div",
+            { staticClass: "row justify-content-center align-items-center" },
+            [
+              _c("div", { staticClass: "my-3 col" }, [
+                _c("label", { staticClass: "form-label" }, [_vm._v("Status")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.status,
+                        expression: "form.status",
+                      },
+                    ],
+                    staticClass:
+                      "form-select form-select-sm text-center shadow-none",
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "status",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                    },
+                  },
+                  _vm._l(_vm.statuses, function (status) {
+                    return _c(
+                      "option",
+                      { key: status.value, domProps: { value: status.value } },
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(status.text) +
+                            "\n              "
+                        ),
+                      ]
+                    )
+                  }),
+                  0
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "my-3 col" }, [
+                _c("label", { staticClass: "form-label" }, [
+                  _vm._v("Edit Count"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group input-group-sm" }, [
+                  _c("span", { staticClass: "px-4" }, [
+                    _vm._v(
+                      _vm._s(
+                         false || 0 >= _vm.form.editCount ? 0 : _vm.form.editCount
+                      )
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm btn-success shadow-none",
+                      on: {
+                        "~click": function ($event) {
+                          _vm.form.editCount++
+                        },
+                      },
+                    },
+                    [_c("i", { staticClass: "fas fa-plus" })]
+                  ),
+                ]),
+              ]),
+            ]
           ),
         ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-sm btn-success shadow-none",
-            on: {
-              "~click": function ($event) {
-                _vm.form.editCount++
-              },
-            },
-          },
-          [_c("i", { staticClass: "fas fa-plus" })]
-        ),
       ]),
     ]),
     _vm._v(" "),
