@@ -22,7 +22,7 @@ class CreateHomesTable extends Migration
             $table->string('focusTitle');
             $table->string('shortDescription');
             $table->integer('editCount')->nullable();
-            $table->enum('status', ['active', 'inactive'])->nullable();
+            $table->enum('status', ['active', 'inactive']);
             $table->timestamps();
         });
     }

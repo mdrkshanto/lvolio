@@ -144,7 +144,6 @@ export default {
   data() {
     return {
       statuses: [
-        { value: null, text: "Status" },
         { value: "active", text: "Active" },
         { value: "inactive", text: "Inactive" },
       ],
@@ -176,7 +175,7 @@ export default {
         name: null,
         focusTitle: null,
         shortDescription: null,
-        status: null,
+        status: [],
         editCount: null,
       }),
     };

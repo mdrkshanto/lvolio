@@ -2181,13 +2181,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       statuses: [{
-        value: null,
-        text: "Status"
-      }, {
         value: "active",
         text: "Active"
       }, {
@@ -2251,7 +2258,7 @@ __webpack_require__.r(__webpack_exports__);
         name: null,
         focusTitle: null,
         shortDescription: null,
-        status: null
+        status: 'inactive'
       })
     };
   },
@@ -2443,9 +2450,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       statuses: [{
-        value: null,
-        text: "Status"
-      }, {
         value: "active",
         text: "Active"
       }, {
@@ -2510,7 +2514,7 @@ __webpack_require__.r(__webpack_exports__);
         name: null,
         focusTitle: null,
         shortDescription: null,
-        status: null,
+        status: [],
         editCount: null
       })
     };
@@ -29402,56 +29406,60 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-3 mx-auto" }, [
-          _c(
-            "div",
-            { staticClass: "row justify-content-center align-items-center" },
-            [
-              _c("div", { staticClass: "my-3 col" }, [
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.status,
-                        expression: "form.status",
-                      },
-                    ],
-                    staticClass:
-                      "form-select form-select-sm text-center shadow-none",
-                    on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.form,
-                          "status",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      },
+          _c("div", { staticClass: "row justify-content-center" }, [
+            _c("div", { staticClass: "my-3 col" }, [
+              _c("label", { staticClass: "form-label" }, [_vm._v("Status")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.status,
+                      expression: "form.status",
+                    },
+                  ],
+                  staticClass:
+                    "form-select form-select-sm text-center shadow-none",
+                  on: {
+                    change: function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "status",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
                     },
                   },
-                  _vm._l(_vm.statuses, function (status) {
-                    return _c(
-                      "option",
-                      { key: status.value, domProps: { value: status.value } },
-                      [_vm._v(_vm._s(status.text))]
-                    )
-                  }),
-                  0
-                ),
-              ]),
-            ]
-          ),
+                },
+                _vm._l(_vm.statuses, function (status) {
+                  return _c(
+                    "option",
+                    { key: status.value, domProps: { value: status.value } },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(status.text) +
+                          "\n              "
+                      ),
+                    ]
+                  )
+                }),
+                0
+              ),
+            ]),
+          ]),
         ]),
       ]),
     ]),

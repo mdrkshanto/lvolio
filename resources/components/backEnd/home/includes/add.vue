@@ -86,10 +86,20 @@
           />
         </div>
         <div class="col-3 mx-auto">
-          <div class="row justify-content-center align-items-center">
+          <div class="row justify-content-center">
             <div class="my-3 col">
-              <select class="form-select form-select-sm text-center shadow-none" v-model="form.status">
-                <option v-for="status in statuses" :key="status.value" :value="status.value">{{ status.text }}</option>
+              <label class="form-label">Status</label>
+              <select
+                class="form-select form-select-sm text-center shadow-none"
+                v-model="form.status"
+              >
+                <option
+                  v-for="status in statuses"
+                  :key="status.value"
+                  :value="status.value"
+                >
+                  {{ status.text }}
+                </option>
               </select>
             </div>
           </div>
@@ -119,7 +129,6 @@ export default {
   data() {
     return {
       statuses: [
-        { value: null, text: "Status" },
         { value: "active", text: "Active" },
         { value: "inactive", text: "Inactive" },
       ],
@@ -150,7 +159,7 @@ export default {
         name: null,
         focusTitle: null,
         shortDescription: null,
-        status: null,
+        status: 'inactive',
       }),
     };
   },
