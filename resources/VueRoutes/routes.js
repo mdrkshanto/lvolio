@@ -1,7 +1,22 @@
+import home from '../components/frontEnd/master/index'
 import adminHome from '../components/backEnd/home/index'
 import addHome from '../components/backEnd/home/includes/add'
 import editHome from '../components/backEnd/home/includes/edit'
 export const routes = [
+    {
+        path: "/",
+        name: "home",
+        meta: {
+            title: "Home",
+            page: "Home",
+            cardTitle: "Home Contents",
+            button: {
+                link: "addHome",
+                title: `<i class="fas fa-plus"></i>`
+            }
+        },
+        component: home
+    },
     {
         path: "/home",
         name: "adminHome",

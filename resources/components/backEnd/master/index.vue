@@ -5,7 +5,7 @@
     <MainContent />
   </div>
 </template>
-<script scoped>
+<script>
 import("../../../../public/backEnd/assets/dist/js/adminlte.min");
 import("../../../../public/backEnd/assets/dist/js/demo");
 
@@ -18,5 +18,4 @@ export default {
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback");
-@import "../../../../public/backEnd/assets/dist/css/adminlte.min.css";
 </style>
