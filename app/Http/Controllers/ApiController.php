@@ -14,7 +14,7 @@ class ApiController extends Controller
     }
     public function latestHomeData()
     {
-        $home = Home::latest('updated_at')->where('status','active')->first();
+        $home = Home::latest('updated_at')->where('status', 'active')->first();
         return response()->json(['latestHomeData' => $home], 200);
     }
     public function allHomeData()

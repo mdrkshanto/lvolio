@@ -16,7 +16,11 @@
         <router-link
           :to="{ name: 'adminHome' }"
           class="nav-link"
-          :class="$route.name === 'adminHome' || 'addHome' ? 'active' || 'editHome' : ''"
+          :class="
+            $route.name === 'adminHome' || 'addHome'
+              ? 'active' || 'editHome'
+              : ''
+          "
           >Home</router-link
         >
       </li>
@@ -28,3 +32,9 @@
     </ul>
   </nav>
 </template>
+<style scoped>
+.navbar-brand img {
+  height: 2rem;
+  width: 5rem;
+}
+</style>

@@ -1,4 +1,4 @@
-import home from '../components/frontEnd/master/index'
+import home from '../components/frontEnd/home/index'
 import adminHome from '../components/backEnd/home/index'
 import addHome from '../components/backEnd/home/includes/add'
 import editHome from '../components/backEnd/home/includes/edit'
