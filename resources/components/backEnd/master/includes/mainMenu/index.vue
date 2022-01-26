@@ -73,13 +73,27 @@
               :to="{ name: `adminHome` }"
               class="nav-link"
               :class="
-                $route.name === `adminHome` || `addHome` || `editHome`
+                $route.name === `adminHome` || $route.name === `addHome` || $route.name === `editHome`
                   ? 'bg-secondary active'
                   : ''
               "
             >
               <i class="fas fa-igloo"></i>
               <p>Home</p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link
+              :to="{ name: `adminAbout` }"
+              class="nav-link"
+              :class="
+                $route.name === `adminAbout` || $route.name === `addAbout` || $route.name === `editAbout`
+                  ? 'bg-secondary active'
+                  : ''
+              "
+            >
+              <i class="fas fa-igloo"></i>
+              <p>About</p>
             </router-link>
           </li>
         </ul>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,16 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontEnd');
-});
+Route::get('/', [HomeController::class,'index']);
 Route::get('/home', [HomeController::class, 'show']);
 Route::get('/add-home', [HomeController::class, 'create']);
 Route::get('/edit-home{id}', [HomeController::class, 'edit']);
+Route::get('/about', [AboutController::class,'index']);
+Route::get('/admin-about', [AboutController::class, 'show']);
+Route::get('/add-about', [AboutController::class, 'create']);
+Route::get('/edit-about{id}', [AboutController::class, 'edit']);
 
 
 Route::post('/addHome', [HomeController::class, 'store']);
 Route::put('/updateHome{id}', [HomeController::class, 'update']);
+Route::post('/addAbout', [AboutController::class, 'store']);
+Route::put('/updateAbout{id}', [AboutController::class, 'update']);
 
 
 Route::get('/dashboard', function () {
