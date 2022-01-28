@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-black sticky-top py-0">
     <router-link :to="{ name: 'home' }" class="navbar-brand">{{
-      name
+      name ? name : "Md Rezaul Karim Shanto"
     }}</router-link>
     <button
       class="navbar-toggler shadow-none"

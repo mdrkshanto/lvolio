@@ -32331,7 +32331,7 @@ var render = function () {
       _c(
         "router-link",
         { staticClass: "navbar-brand", attrs: { to: { name: "home" } } },
-        [_vm._v(_vm._s(_vm.name))]
+        [_vm._v(_vm._s(_vm.name ? _vm.name : "Md Rezaul Karim Shanto"))]
       ),
       _vm._v(" "),
       _vm._m(0),
